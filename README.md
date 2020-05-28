@@ -46,7 +46,7 @@ GET /product/subcategory/{id} // get product by subcategory id
 GET /product/tag/{id} // get product by tag id
 ```
 
-**Subcategory*
+**Subcategory**
 ```
 GET /subcategory/{id} // get subcategory by id
 PUT /subcategory/{id} // change subcategory by id
