@@ -29,7 +29,7 @@ public class ProductController {
     }
 
     // Create product
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public Product postProduct(@RequestBody Product product) throws Exception {
         productService.createProduct(product);
         return product;

@@ -1,8 +1,7 @@
 package com.example.EShop.Controller;
 
-import com.neobis.eshop.entity.TagEntity;
-import com.neobis.eshop.service.TagService;
-import io.swagger.annotations.ApiOperation;
+import com.example.EShop.Model.Tag;
+import com.example.EShop.Service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,35 +15,35 @@ public class TagController {
     @Autowired
     TagService tagService;
 
+    // Get tag by id
     @GetMapping("/{id}")
-    @ApiOperation(value = "Найти тэг по id")
-    public TagEntity getTag(@PathVariable ("id") Integer id) throws Exception {
+    public Tag getTag(@PathVariable ("id") Integer id) throws Exception {
         return tagService.findById(id);
     }
 
+    // Change tag by id
     @PutMapping("/{id}")
-    @ApiOperation(value = "Изменить тэг")
-    public TagEntity putTag(@PathVariable ("id") Integer id ,@RequestBody TagEntity tagEntity) throws Exception {
-        return tagService.changeById(id,tagEntity);
+    public Tag putTag(@PathVariable ("id") Integer id, @RequestBody Tag tag) throws Exception {
+        return tagService.changeById(id, tag);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    @ApiOperation(value = "Создать тэг")
-    public TagEntity postTag(@RequestBody TagEntity tagEntity) throws Exception {
-        tagService.createTag(tagEntity);
-        return tagEntity;
+    // Create tag
+    @PostMapping
+    public Tag postTag(@RequestBody Tag tag) throws Exception {
+        tagService.createTag(tag);
+        return tag;
     }
 
+    // Delete tag
     @DeleteMapping("/{id}")
-    @ApiOperation(value = "Удалить тэг")
     public void deleteTag(@PathVariable ("id") Integer id)
     {
         tagService.deleteById(id);
     }
 
+    // Get all tags
     @GetMapping(value="/all")
-    @ApiOperation(value = "Получить все тэги")
-    public List<TagEntity> getAllTags() {
+    public List<Tag> getAllTags() {
         return tagService.getAll();
     }
 }

@@ -24,7 +24,7 @@ public class MainController {
     private JwtUtil jwtTokenUtil;
 
     // Authentication with jwt token
-    @PostMapping
+    @PostMapping(value = "/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         try {
             authenticationManager.authenticate(

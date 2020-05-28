@@ -27,7 +27,7 @@ public class OrderController {
     }
 
     // Create order
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public Order postOrder(@RequestBody Order order) throws Exception {
         orderService.createOrder(order);
         return order;
@@ -40,13 +40,13 @@ public class OrderController {
     }
 
     // Get all orders
-    @GetMapping(value="/all")
+    @GetMapping(value = "/all")
     public List<Order> getAllOrders() {
         return orderService.getAll();
     }
 
     // Get all orders of user
-    @GetMapping
+    @GetMapping(value = "/user/email")
     public List<Order> getOrdersByUserId(@PathVariable("email") String email) {
         return orderService.getByUser(email);
     }

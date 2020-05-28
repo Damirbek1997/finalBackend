@@ -21,9 +21,9 @@ public class ImageController {
 
     // Create image
     @PostMapping
-    public Image postImage(@RequestBody Image imageEntity) throws Exception {
-        imageService.createImage(imageEntity);
-        return imageEntity;
+    public Image postImage(@RequestBody Image image) throws Exception {
+        imageService.createImage(image);
+        return image;
     }
 
     // Change image by id
